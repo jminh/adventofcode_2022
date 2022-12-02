@@ -1,0 +1,8 @@
+
+Use clojure or babashka to run the code. For example:
+
+  #+begin_example
+  bb src/day1.clj
+  68775
+  202585
+  #+end_example
