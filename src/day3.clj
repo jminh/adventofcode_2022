@@ -41,3 +41,17 @@ CrZsJsPPZsGzwwsLwLmpwMDw")
        (apply +)))
 
 (prn ans1)
+
+(def ans2
+  (->> "src/input/day3.txt"
+       slurp
+       str/split-lines
+       (partition 3)
+       (map (fn [grp] (map set grp)))
+       (map (fn [grp] (apply clojure.set/intersection grp)))
+       (map vec)
+       (flatten)
+       (map char-num-map)
+       (apply +)))
+
+(prn ans2)
