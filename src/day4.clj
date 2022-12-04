@@ -44,3 +44,21 @@
        ))
 
 (prn ans1)
+
+(def ans2
+  (->> "src/input/day4.txt"
+       slurp
+       str/split-lines
+       (map (partial re-matches #"(\d+)-(\d+),(\d+)-(\d+)"))
+       (map rest)
+       (map (fn [nums] (map #(Integer/parseInt %) nums)))
+       (map #(split-at 2 %))
+       (map (fn [[a b]] [(end-plus-one a) (end-plus-one b)]))
+       (map (fn [[a b]] [(apply range a) (apply range b)]))
+       (map (fn [[a b]] [(set a) (set b)]))
+       (map (fn [[a b]] (clojure.set/intersection a b)))
+       (map empty?)
+       (remove true?)
+       (count)))
+
+(prn ans2)
