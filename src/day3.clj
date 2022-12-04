@@ -10,7 +10,7 @@
                    (zipmap (char-range \a \z) (range 1 27))
                    (zipmap (char-range \A \Z) (range 27 53))))
 
-(def raw_input "vJrwpWtwJgWrhcsFMMfFFhFp
+(def example_input "vJrwpWtwJgWrhcsFMMfFFhFp
 jqHRNqRjqzjGDLGLrsFMfFZSrLrFZsSL
 PmmdzqPrVvPwwTWBwg
 wMqvLMZHhHMvwLHjbvcjnnSBnvTQFn
@@ -18,7 +18,7 @@ ttgJtRGJQctTZtZT
 CrZsJsPPZsGzwwsLwLmpwMDw")
 
 (def ans1
-  (->> raw_input
+  (->> example_input
        str/split-lines
        (map #(split-at (/ (count %) 2) %))
        (map (fn [[a b]] [(set a) (set b)]))

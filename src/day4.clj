@@ -3,7 +3,7 @@
 
 (require '[clojure.string :as str])
 
-(def raw_input "2-4,6-8
+(def example_input "2-4,6-8
 2-3,4-5
 5-7,7-9
 2-8,3-7
@@ -13,7 +13,7 @@
 (defn end-plus-one [range] [( nth range 0) (inc  (nth range 1))] )
 
 (def ans1
-  (->> raw_input
+  (->> example_input
        str/split-lines
        (map (partial re-matches #"(\d+)-(\d+),(\d+)-(\d+)"))
        (map rest)

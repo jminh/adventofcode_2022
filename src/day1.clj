@@ -3,7 +3,7 @@
 
 (require '[clojure.string :as str])
 
-(def raw_input "1000
+(def example_input "1000
 2000
 3000
 
@@ -19,7 +19,7 @@
 10000")
 
 (def ans1
-  (->> raw_input
+  (->> example_input
        str/split-lines
        (partition-by (partial = ""))
        (remove (partial = '("")))

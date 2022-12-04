@@ -3,7 +3,7 @@
 
 (require '[clojure.string :as str])
 
-(def raw_input "A Y
+(def example_input "A Y
 B X
 C Z
 ")
@@ -19,7 +19,7 @@ C Z
                 ["C", "Z"] (+ 3 3)})
 
 (def ans1
-  (->> raw_input
+  (->> example_input
        str/split-lines
        (map #(str/split % #" "))
        (map score-map)
