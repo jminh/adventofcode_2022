@@ -59,3 +59,20 @@ move 1 from 1 to 2
        ))
 
 (prn ans1) ; VGBBJCRMN
+
+(defn move2 [state, [num, from, to]]
+  (let [from-count (count (get state from))
+        from-items (subvec (get state from) (- from-count num))
+        s (assoc-in state [from] (subvec (get state from) 0 (- from-count num)))]
+    (update-in s [to] (partial apply conj) from-items)))
+
+(def ans2
+  (->> example_input
+       (map (partial re-matches #"move (\d+) from (\d+)\sto\s+(\d+)"))
+       (map (partial rest))
+       (map (fn [nums] (map #(Integer/parseInt %) nums)))
+       (reduce move2 supply-stack)
+       (drop 1)
+       (map #(peek %))))
+
+(prn ans2) ; LBBVJBRMH
