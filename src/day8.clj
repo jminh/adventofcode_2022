@@ -18,6 +18,7 @@
        (map seq)
        (mapv (fn [nums] (mapv #(Integer/parseInt (str %)) nums)))))
 
+; // refactor the name pull -> transpose
 (defn pull [grid]
   (apply mapv vector grid))
 
