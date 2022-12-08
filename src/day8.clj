@@ -45,9 +45,35 @@
           (for [i (range (count input))
                 j (range (count (first input)))]
             (visible? [i j] input)))))
-; 1779
+; answer 1 1779
 
-; --
+(defn foo [[acc value] item]
+  (cond
+    (< item value) [(inc acc) value]
+    (= item value) (reduced [(inc acc) value])
+    :else (reduced [acc value])))
+
+(defn distance [value array]
+  (get (reduce foo [0 value] array) 0))
+
+(defn score [[x y] grid]
+  (let [value (get-in grid [x y])
+        row (get grid x)
+        before (subvec row 0 y)
+        after (subvec row (inc y))]
+    (* (distance value (rseq before))
+       (distance value after))))
+
+(defn total-score [[x y] grid]
+  (* (score [x y] grid)
+     (score [y x] (pull grid))))
+
+(prn
+ (apply max
+        (for [i (range (count input))
+              j (range (count (first input)))]
+          (total-score [i j] input))))
+; answer2 17224
 
 (for [i (range (count input))
       j (range (count (first input)))]
