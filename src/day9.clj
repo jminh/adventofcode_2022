@@ -71,3 +71,10 @@ R 2")
   (set
    (reductions move-tail [0 0] head-positions))))
 ; answer1 6243
+
+(prn
+ (count
+  (set
+   (nth
+    (iterate #(reductions move-tail [0 0] %) head-positions) 9))))
+; answer2 2630
