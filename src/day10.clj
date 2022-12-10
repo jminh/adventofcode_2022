@@ -65,4 +65,34 @@ addx -5
    (* 180 (at-cycle 180 input))
    (* 220 (at-cycle 220 input)))
 
-; par1 13680
+; part1 solution 13680
+
+(defn plot [i j]
+  (let [sprite (at-cycle (grid-cycle i j) input)]
+    (if (#{sprite (inc sprite) (dec sprite)} j)
+      "#"
+      ".")))
+
+(for [i (range 6)]
+  (apply str
+         (for [j (range 40)]
+           (plot i j))))
+
+; part2 solution
+; Class: clojure.lang.LazySeq
+; Contents:
+; 0. "###..####..##..###..#..#.###..####.###.."
+; 1. "#..#....#.#..#.#..#.#.#..#..#.#....#..#."
+; 2. "#..#...#..#....#..#.##...#..#.###..###.."
+; 3. "###...#...#.##.###..#.#..###..#....#..#."
+; 4. "#....#....#..#.#....#.#..#....#....#..#."
+; 5. "#....####..###.#....#..#.#....####.###.."
+
+
+(for [i (range 6)]
+  (for [j (range 40)]
+    (plot i j)))
+
+(for [i (range 6)]
+  (for [j (range 40)]
+    [i j (at-cycle (grid-cycle i j) input) (grid-cycle i j)]))

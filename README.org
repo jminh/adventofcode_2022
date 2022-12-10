@@ -3,7 +3,7 @@
 
 https://adventofcode.com/2022
 
-Use clojure or babashka to run the code. For example:
+Use [[https://clojure.org/][clojure]] or [[https://github.com/babashka/babashka][babashka]] to run the code. For example:
 
   #+begin_example
   bb src/day1.clj
