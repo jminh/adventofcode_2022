@@ -6,9 +6,6 @@
 (defn divisible? [div num]
   (zero? (mod num div)))
 
-(defn divisible? [div num]
-  (zero? (mod num div)))
-
 (def monkey-state [[79 98]
                    [54 65 75 74]
                    [79 60 97]
@@ -26,16 +23,16 @@
                 #(* % %)
                 (partial + 3)])
 
-; day1 input: monkey-state, monkey-acc-state, test-fn, operation
+; input by hand : monkey-state, monkey-acc-state, test-fn, operation {{{
 
 (def monkey-state [[96 60 68 91 83 57 85]
-             [76 78 68 81 73 99]
-             [69 86 67 55 96 69 94 85]
-             [88 75 74 98 80]
-             [82]
-             [72 92 92]
-             [74 61]
-             [76 86 83 55]])
+                   [75 78 68 81 73 99]
+                   [69 86 67 55 96 69 94 85]
+                   [88 75 74 98 80]
+                   [82]
+                   [72 92 92]
+                   [74 61]
+                   [76 86 83 55]])
 
 (def monkey-acc-state {:item monkey-state :acc(into [] (repeat (count monkey-state) 0))})
 
@@ -57,7 +54,7 @@
                 #(* % %)
                 (partial + 4)])
 
-; day1 input END
+; day1 input END }}}
 
 (defn change-level [index item]
   (int (Math/floor (/ ((get operation index) item) 3))))
@@ -89,14 +86,16 @@
 
 (round monkey-acc-state)
 
-(:acc
- (nth
-  (take 21
-        (iterate round monkey-acc-state)) 20))
+(apply *
+       (take 2
+             (sort >
+                   (:acc
+                    (nth
+                     (take 21
+                           (iterate round monkey-acc-state)) 20)))))
+; part1 sample
 ; [19 230 224 231 230 245 25 17]
-
-; part1
-;(* 245 231)
+; (* 245 231) = 56595
 
 ; --- --- ---  below no accumulator ---
 
