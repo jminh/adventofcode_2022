@@ -97,6 +97,26 @@
 ; [19 230 224 231 230 245 25 17]
 ; (* 245 231) = 56595
 
+; part2 code
+
+(defn change-level [index item]
+  (let [manage (* 23 19 13 17)
+        r (mod item manage)]
+    ((get operation index) r)))
+
+(defn change-level [index item]
+  (let [manage (* 17 13 19 7 11 3 2 5)
+        r (mod item manage)]
+    ((get operation index) r)))
+
+(apply *
+       (take 2
+             (sort >
+                   (:acc
+                    (nth
+                     (take 10001
+                           (iterate round monkey-acc-state)) 10000)))))
+
 ; --- --- ---  below no accumulator ---
 
 (def monkey-state [[79 98]
